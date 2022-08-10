@@ -370,5 +370,12 @@ SpecificSection4:AddButton({
     end
 })
 
+SpecificSection4:AddButton({
+    Name = "Prison Life Admin",
+    Callback = function()
+        loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/XTheMasterX/Scripts/Main/PrisonLife"))()
+    end
+})
+
 
 OrionLib:Init()
