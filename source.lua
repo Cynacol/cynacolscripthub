@@ -41,6 +41,13 @@ Randomscripts:AddButton({
 })
 
 Randomscripts:AddButton({
+    Name = "CMD-X FE Admin",
+    Callback = function()
+        loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/CMD-X/CMD-X/master/Source", true))()
+    end
+})
+
+Randomscripts:AddButton({
     Name = "Remote Spy Developer Console Mode",
     Callback = function()
                 --[[
