@@ -341,6 +341,14 @@ Randomscripts:AddButton({
 })
 
 Randomscripts:AddButton({
+    Name = "DINO TRANSFORM (REQUIRES R6 AND A SPECIFIC AVATAR)",
+    Callback = function()
+        loadstring(game:HttpGet(('https://raw.githubusercontent.com/PYXDYT/DinoBlox/main/FE%20Script'),true))()
+    end
+})
+
+
+Randomscripts:AddButton({
     Name = "backdoor.exe v8, allows you to run SS scripts on certain games",
     Callback = function()
         loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/iK4oS/backdoor.exe/v8/src/main.lua"))();
