@@ -29,10 +29,14 @@ local SpecificSection3 = Specific:AddSection({
 })
 
 local SpecificSection4 = Specific:AddSection({
-	Name = "Victory Race"
+	Name = "Build A Boat For Treasure"
 })
 
 local SpecificSection5 = Specific:AddSection({
+	Name = "Victory Race"
+})
+
+local SpecificSection6 = Specific:AddSection({
 	Name = "Prison Life"
 })
 
@@ -392,6 +396,7 @@ SpecificSection2:AddButton({
     end
 })
 
+
 SpecificSection3:AddButton({
     Name = "Horrific Housing GUI",
     Callback = function()
@@ -400,13 +405,20 @@ SpecificSection3:AddButton({
 })
 
 SpecificSection4:AddButton({
+    Name = "Build A Boat For Treasure GUI",
+    Callback = function()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/1201for/littlegui/main/Build-A-Boat'))()
+    end
+})
+
+SpecificSection5:AddButton({
     Name = "Victory Race GUI",
     Callback = function()
         loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/SmoxHub/SmoxHub-V2/main/Victory-Race-V2", true))()
     end
 })
 
-SpecificSection5:AddButton({
+SpecificSection6:AddButton({
     Name = "M9 Giver",
     Callback = function()
         local itemhandler = game.Workspace.Remote.ItemHandler
@@ -414,7 +426,7 @@ SpecificSection5:AddButton({
     end
 })
 
-SpecificSection5:AddButton({
+SpecificSection6:AddButton({
     Name = "Remington 870 Giver",
     Callback = function()
         local itemhandler = game.Workspace.Remote.ItemHandler
@@ -422,7 +434,7 @@ SpecificSection5:AddButton({
     end
 })
 
-SpecificSection5:AddButton({
+SpecificSection6:AddButton({
     Name = "AK47 Giver",
     Callback = function()
         local itemhandler = game.Workspace.Remote.ItemHandler
@@ -430,7 +442,7 @@ SpecificSection5:AddButton({
     end
 })
 
-SpecificSection5:AddButton({
+SpecificSection6:AddButton({
     Name = "M4A1 Giver (must have the gamepass)",
     Callback = function()
         local itemhandler = game.Workspace.Remote.ItemHandler
@@ -438,7 +450,7 @@ SpecificSection5:AddButton({
     end
 })
 
-SpecificSection5:AddButton({
+SpecificSection6:AddButton({
     Name = "Riot Shield Giver (must have the gamepass)",
     Callback = function()
         local itemhandler = game.Workspace.Remote.ItemHandler
@@ -446,7 +458,7 @@ SpecificSection5:AddButton({
     end
 })
 
-SpecificSection5:AddButton({
+SpecificSection6:AddButton({
     Name = "Hammer Giver (check the console if it doesn't work)",
     Callback = function()
         local itemhandler = game.Workspace.Remote.ItemHandler
@@ -458,7 +470,7 @@ SpecificSection5:AddButton({
     end
 })
 
-SpecificSection5:AddButton({
+SpecificSection6:AddButton({
     Name = "Crude Knife Giver (check the console if it doesn't work)",
     Callback = function()
         local itemhandler = game.Workspace.Remote.ItemHandler
@@ -470,7 +482,7 @@ SpecificSection5:AddButton({
     end
 })
 
-SpecificSection5:AddButton({
+SpecificSection6:AddButton({
     Name = "Key Card Giver (check the console if it doesn't work)",
     Callback = function()
         local itemhandler = game.Workspace.Remote.ItemHandler
@@ -482,7 +494,7 @@ SpecificSection5:AddButton({
     end
 })
 
-SpecificSection5:AddButton({
+SpecificSection6:AddButton({
     Name = "Prison Life Admin",
     Callback = function()
         loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/XTheMasterX/Scripts/Main/PrisonLife"))()
