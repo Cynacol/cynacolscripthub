@@ -372,10 +372,16 @@ Randomscripts:AddButton({
 })
 
 SpecificSection1:AddButton({
-
     Name = "Rainbow Friends GUI",
     Callback = function()
         loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/JNHHGaming/Rainbow-Friends/main/Rainbow%20Friends"))()
+    end
+})
+
+SpecificSection1:AddButton({
+    Name = "Better Rainbow Friends GUI",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/TweedLeak/Scripts/main/Rainbow-Friends.lua"))()
     end
 })
 
