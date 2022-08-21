@@ -360,6 +360,13 @@ Randomscripts:AddButton({
 })
 
 Randomscripts:AddButton({
+    Name = "Unanchored Part Bringer GUI",
+    Callback = function()
+        loadstring(game:HttpGet("https://pastebin.com/raw/WkZwcGjf", true))()
+    end
+})
+
+Randomscripts:AddButton({
     Name = "LeftCtrl+Click TP",
     Callback = function()
         local Plr = game:GetService("Players").LocalPlayer local Mouse = Plr:GetMouse()
