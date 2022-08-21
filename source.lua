@@ -347,10 +347,16 @@ Randomscripts:AddButton({
 Randomscripts:AddButton({
     Name = "DINO TRANSFORM (REQUIRES R6 AND A SPECIFIC AVATAR)",
     Callback = function()
-        loadstring(game:HttpGet(('https://raw.githubusercontent.com/PYXDYT/DinoBlox/main/FE%20Script'),true))()
+        loadstring(game:HttpGetAsync(('https://raw.githubusercontent.com/PYXDYT/DinoBlox/main/FE%20Script'),true))()
     end
 })
 
+Randomscripts:AddButton({
+    Name = "ZOMBIE SUMMON (REQUIRES R6 AND A SPECIFIC AVATAR)",
+    Callback = function()
+        loadstring(game:HttpGetAsync("https://gist.githubusercontent.com/someunknowndude/18f1d979ad9a25ad69064be75f55f735/raw/dc36f1e9ad906a7434bd77bcd0ce8218fb5f4d88/zombie.lua"))()
+    end
+})
 
 Randomscripts:AddButton({
     Name = "backdoor.exe v8, allows you to run SS scripts on certain games",
