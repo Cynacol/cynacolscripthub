@@ -38,6 +38,10 @@ local SpecificSection5 = Specific:AddSection({
 	Name = "Victory Race"
 })
 
+local SpecificSectionS = Specific:AddSection({
+	Name = "Shadovis RPG"
+})
+
 local SpecificSection6 = Specific:AddSection({
 	Name = "Prison Life"
 })
@@ -1147,6 +1151,13 @@ SpecificSection5:AddButton({
     Name = "Victory Race GUI",
     Callback = function()
         loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/SmoxHub/SmoxHub-V2/main/Victory-Race-V2", true))()
+    end
+})
+
+SpecificSection5:AddButton({
+    Name = "Shadovis RPG GUI",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/LioK251/RbScripts/main/shadovis_rpg.lua"))()
     end
 })
 
