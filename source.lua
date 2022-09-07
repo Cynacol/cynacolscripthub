@@ -21,6 +21,9 @@ local SpecificSectionD = Specific:AddSection({
 	Name = "Doors"
 })
 
+local SpecificSection1 = Specific:AddSection({
+	Name = "Rainbow Friends"
+})
 
 local SpecificSection2 = Specific:AddSection({
 	Name = "Epic Minigames"
