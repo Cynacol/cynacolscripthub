@@ -1648,9 +1648,9 @@ Randomscripts:AddButton({
                     Decal.Parent = Cube 
                 end 
             end 
-            if (key=="") then 
-                if dist ~= 15 then 
-                    dist = 15 
+            if (key=="y") then 
+                if dist ~= 200 then 
+                    dist = 200 
                 end 
             end 
         end
