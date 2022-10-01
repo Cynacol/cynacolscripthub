@@ -293,7 +293,7 @@ Randomscripts:AddButton({
 })
 
 Randomscripts:AddButton({
-    Name = "Net Bypass (stops hats falling off you in fe scripts most of the time)",
+    Name = "Net Bypass, stops hats falling off in fe scripts most of the time",
     Callback = function()
         print("fe bypass on")
         spawn(function()
