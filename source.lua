@@ -1,5 +1,5 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = "🏛 Cynacol's Script Hub", HidePremium = false, IntroEnabled = false, SaveConfig = true, ConfigFolder = "CynacolHubConfig"})
+local Window = OrionLib:MakeWindow({Name = "🏛 Cynacol's Script Hub", HidePremium = true, IntroEnabled = false, SaveConfig = true, ConfigFolder = "CynacolHubConfig"})
 
 local InfoTab = Window:MakeTab({
 	Name = "Info & Welcome",
