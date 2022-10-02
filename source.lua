@@ -3,7 +3,7 @@ local Window = OrionLib:MakeWindow({Name = "🏛 Cynacol's Script Hub", HidePrem
 local playerslist = {}
 
 for i, v in pairs(game.Players:GetChildren()) do
-	table.insert(playerslist, v.Name)	
+	if not v.Name = game.Players.LocalPlayer.Name then table.insert(playerslist, v.Name) return end	
 end
 
 local InfoTab = Window:MakeTab({
@@ -2722,7 +2722,7 @@ SpecificSection6:AddButton({
 OrionLib:Init()
 
 game.Players.PlayerAdded:Connect(function(player)
-	table.insert(playerlist, player.Name)
+	if not v.Name = game.Players.LocalPlayer.Name then table.insert(playerslist, v.Name) return end
 end)
 	
 game.Players.PlayerRemoving:Connect(function(player)
