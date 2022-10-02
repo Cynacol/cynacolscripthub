@@ -1653,7 +1653,7 @@ Randomscripts:AddButton({
             end 
             if (key=="y") then 
                 if dist ~= 200 then 
-                    dist = 200 
+                    dist += 200 
                 end 
             end 
         end
