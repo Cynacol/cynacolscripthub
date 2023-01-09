@@ -30,6 +30,10 @@ local SpecificSection1 = Specific:AddSection({
 	Name = "Rainbow Friends"
 })
 
+local SpecificSectionF = Specific:AddSection({
+	Name = "Fling Things and People"
+})
+
 local SpecificSection2 = Specific:AddSection({
 	Name = "Epic Minigames"
 })
@@ -2603,6 +2607,205 @@ SpecificSection1:AddButton({
     Name = "Better Rainbow Friends GUI",
     Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/TweedLeak/Scripts/main/Rainbow-Friends.lua"))()
+    end
+})
+
+SpecificSectionF:AddButton({
+    Name = "Super Strength (throw really far)",
+    Callback = function()
+        local bodyvel_Name = "FlingVelocity"
+	local userinputs = game:GetService("UserInputService")
+	local w = game:GetService("Workspace")
+	local r = game:GetService("RunService")
+	local d = game:GetService("Debris")
+	local strength = 1000
+
+	w.ChildAdded:Connect(function(model)
+	    if model.Name == "GrabParts" then
+		local part_to_impulse = model["GrabPart"]["WeldConstraint"].Part1
+
+		if part_to_impulse then
+		    print("Part found!")
+
+		    local inputObj
+		    local velocityObj = Instance.new("BodyVelocity", part_to_impulse)
+
+		    model:GetPropertyChangedSignal("Parent"):Connect(function()
+			if not model.Parent then
+			    if userinputs:GetLastInputType() == Enum.UserInputType.MouseButton2 then
+				print("Launched!")
+				velocityObj.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
+				velocityObj.Velocity = workspace.CurrentCamera.CFrame.lookVector * strength
+				d:AddItem(velocityObj, 1)
+			    elseif userinputs:GetLastInputType() == Enum.UserInputType.MouseButton1 then
+				velocityObj:Destroy()
+				print("Cancel Launch!")
+			    else
+				velocityObj:Destroy()
+				print("No two keys pressed!")
+			    end
+			end
+		    end)
+		end
+	    end
+	end)
+    end
+})
+
+SpecificSectionF:AddButton({
+    Name = "Anti-Hold (people can not hold you)",
+    Callback = function()
+        local PS = game:GetService("Players")
+	local Player = PS.LocalPlayer
+	local Character = Player.Character or Player.CharacterAdded:Wait()
+	local RS = game:GetService("ReplicatedStorage")
+	local CE = RS:WaitForChild("CharacterEvents")
+	local R = game:GetService("RunService")
+	local BeingHeld = Player:WaitForChild("IsHeld")
+	local PlayerScripts = Player:WaitForChild("PlayerScripts")
+
+	--[[ Remotes ]]
+	local StruggleEvent = CE:WaitForChild("Struggle")
+
+	--[[ Anti-Explosion ]]
+	workspace.DescendantAdded:Connect(function(v)
+	if v:IsA("Explosion") then
+	v.BlastPressure = 0
+	end
+	end)
+
+	--[[ Anti-grab ]]
+
+	BeingHeld.Changed:Connect(function(C)
+	    if C == true then
+		local char = Player.Character
+
+		if BeingHeld.Value == true then
+		    local Event;
+		    Event = R.RenderStepped:Connect(function()
+			if BeingHeld.Value == true then
+			    char["HumanoidRootPart"].AssemblyLinearVelocity = Vector3.new()
+			    StruggleEvent:FireServer(Player)
+			elseif BeingHeld.Value == false then
+			    Event:Disconnect()
+			end
+		    end)
+		end
+	    end
+	end)
+
+	local function reconnect()
+	    local Character = Player.Character or Player.CharacterAdded:Wait()
+	    local Humanoid = Character:FindFirstChildWhichIsA("Humanoid") or Character:WaitForChild("Humanoid")
+	    local HumanoidRootPart = Character:WaitForChild("HumanoidRootPart")
+
+	    HumanoidRootPart:WaitForChild("FirePlayerPart"):Remove()
+
+	    Humanoid.Changed:Connect(function(C)
+		if C == "Sit" and Humanoid.Sit == true then
+		    if Humanoid.SeatPart ~= nil and tostring(Humanoid.SeatPart.Parent) == "CreatureBlobman" then
+		    elseif Humanoid.SeatPart == nil then
+		    Humanoid:SetStateEnabled(Enum.HumanoidStateType.Jumping, true)
+		    Humanoid.Sit = false
+		    end
+		end
+	    end)
+	end
+
+	reconnect()
+
+	Player.CharacterAdded:Connect(reconnect)
+    end
+})
+
+SpecificSectionF:AddButton({
+    Name = "Poison (slowly kill people as you hold them)",
+    Callback = function()
+        print("Poison Loaded!")
+ 
+	local userinputs = game:GetService("UserInputService")
+	local w = game:GetService("Workspace")
+	local r = game:GetService("RunService")
+
+	local poison_part1 = workspace["Map"]["Hole"]["PoisonBigHole"]["PoisonHurtPart"]
+	local poison_part2 = workspace["Map"]["Hole"]["PoisonSmallHole"]["PoisonHurtPart"]
+	local poison_part3
+	local poison_part4
+
+	local Poison_Touch = true
+	local key = Enum.KeyCode.K
+
+	userinputs.InputBegan:Connect(function(input, chat) 
+	    if input.KeyCode == key and not chat then
+		if Poison_Touch then
+		    Poison_Touch = false
+		else
+		    Poison_Touch = true
+		end
+	    end
+	end)
+
+	for _, part in pairs(workspace["Map"]["FactoryIsland"]:GetDescendants()) do
+	    if part.Name == "PoisonHurtPart" then
+		if not poison_part3 then
+		    poison_part3 = part
+		    part.Transparency = 1
+		    part.Size = Vector3.new(0.5, 0.5, 0.5)
+		    part.Position = Vector3.new()
+		elseif not poison_part4 then
+		    poison_part4 = part
+		    part.Transparency = 1
+		    part.Size = Vector3.new(0.5, 0.5, 0.5)
+		    part.Position = Vector3.new()
+		end
+	    end
+	end
+
+	poison_part1.Size, poison_part2.Size = Vector3.new(0.5, 0.5, 0.5), Vector3.new(0.5, 0.5, 0.5)
+	poison_part1.Position, poison_part2.Position = Vector3.new(0, 0, 0), Vector3.new(0,0,0)
+
+	local poison_part = workspace["Map"]["Hole"]["PoisonBigHole"]["PoisonHurtPart"]
+	poison_part.Size = Vector3.new(1,1,1)
+	poison_part.Transparency = 1
+
+	w.ChildAdded:Connect(function(model)
+	    if model.Name == "GrabParts" then
+		local part_to_impulse = model["GrabPart"]["WeldConstraint"].Part1
+
+		if part_to_impulse then
+		    print("Part found!")
+
+		    if part_to_impulse.Parent:FindFirstChildOfClass("Humanoid") then
+			print("Poison Started!")
+
+			local head = part_to_impulse.Parent["Head"]
+
+			while model.Parent do
+			    if Poison_Touch then
+				poison_part.Position = head.Position
+				poison_part2.Position = head.Position
+				poison_part3.Position = head.Position
+				poison_part4.Position = head.Position
+			    else
+				poison_part3.Position = Vector3.new()
+				poison_part4.Position = Vector3.new()
+				poison_part2.Position = Vector3.new()
+				poison_part.Position = Vector3.new()
+			    end
+
+			    task.wait()
+			end
+
+			print("Poison ended!")
+
+			poison_part3.Position = Vector3.new()
+			poison_part4.Position = Vector3.new()
+			poison_part2.Position = Vector3.new()
+			poison_part.Position = Vector3.new()
+		    end
+		end
+	    end
+	end)
     end
 })
 
