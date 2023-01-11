@@ -2618,7 +2618,7 @@ SpecificSectionF:AddButton({
 	local w = game:GetService("Workspace")
 	local r = game:GetService("RunService")
 	local d = game:GetService("Debris")
-	local strength = 1000
+	local strength = 1500
 
 	w.ChildAdded:Connect(function(model)
 	    if model.Name == "GrabParts" then
