@@ -1,6 +1,7 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 local Window = OrionLib:MakeWindow({Name = "🏛 Cynacol's Script Hub", HidePremium = true, IntroEnabled = false, SaveConfig = true, ConfigFolder = "CynacolHubConfig"})
 local playerslist = {}
+getgenv().HavenEnabled = false
 
 for i, v in pairs(game.Players:GetChildren()) do
 	if not v.Name == game.Players.LocalPlayer.Name then table.insert(playerslist, v.Name) return end	
@@ -56,6 +57,10 @@ local SpecificSectionS = Specific:AddSection({
 
 local SpecificSection6 = Specific:AddSection({
 	Name = "Prison Life"
+})
+
+local SpecificSection7 = Specific:AddSection({
+	Name = "Miner's Haven"
 })
 
 InfoTab:AddParagraph("Welcome","This is something I originally made for myself just for easily executing scripts, so I don't have to keep looking them up and pasting them into my executor. This mainly is for multiple games I play every now and then, and it may contain some remote event manipulation. It will mostly be scripts that I find for games that I play. If you want me to add something tell me at my discord: Cynacol#2589                        Made by Cynacol / DementedDivinity")
@@ -2925,6 +2930,30 @@ SpecificSection6:AddButton({
     Name = "Prison Life Admin",
     Callback = function()
         loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/XTheMasterX/Scripts/Main/PrisonLife"))()
+    end
+})
+
+SpecificSection7:AddToggle({
+	Name = "Collect all boxes toggle (may take a bit to toggle off)",
+	Default = false,
+	Callback = function(Value)
+		getgenv().HavenEnabled = Value
+	end    
+})
+
+SpecificSection7:AddButton({
+    Name = "Collect all boxes (scuffed)",
+    Callback = function()
+	while getgenv().HavenEnabled do
+	    for i,v in pairs(game.Workspace.Boxes:GetChildren()) do
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+		wait(0.1)
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+		wait(0.1)
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+	    end
+	    wait()
+	end
     end
 })
 
