@@ -32,6 +32,7 @@ local Window = Rayfield:CreateWindow({
 })
 
 local Randomscripts = Window:CreateTab("Miscellaneous")
+local flingscripts = Window:CreateTab("Fling Things and People")
 
 local Button = Randomscripts:CreateButton({
    Name = "Infinite Yield FE Admin",
@@ -1513,7 +1514,7 @@ local luckybutton2 = Randomscripts:CreateButton({
     end,
 })
 
-local flingbuttom = Randomscripts:CreateButton({
+local flingbuttom = flingscripts:CreateButton({
     Name = "fling things and people throw far",
     Callback = function()
         local bodyvel_Name = "FlingVelocity"
@@ -1555,7 +1556,7 @@ local flingbuttom = Randomscripts:CreateButton({
     end,
 })
 
-local flinganti2 = Randomscripts:CreateButton({
+local flinganti2 = flingscripts:CreateButton({
     Name = "fling things anti hold",
     Callback = function()
         local PS = game:GetService("Players")
