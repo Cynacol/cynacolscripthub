@@ -1293,7 +1293,7 @@ local flinganti2 = flingscripts:CreateButton({
 
 local bcb = gamescripts:CreateLabel("Be Crushed by a Speeding Wall")
 local Toggle = gamescripts:CreateToggle({
-   Name = "Autofarm Coins",
+   Name = "Autofarm Coins (risky, people may see and report you)",
    CurrentValue = false,
    Callback = function(Value)
     CurrentValue = Value
