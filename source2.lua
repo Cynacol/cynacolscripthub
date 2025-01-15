@@ -1306,16 +1306,16 @@ local Toggle = gamescripts:CreateToggle({
 			while CurrentValue == true do task.wait()
 
                 hum.CFrame = workspace.Lifebricks["1"].CFrame
-                task.wait(1)
+                task.wait(0.1)
                 hum.CFrame = workspace.Lifebricks["2"].CFrame
-                task.wait(1)
+                task.wait(0.1)
                 hum.CFrame = workspace.Lifebricks["3"].CFrame
-                task.wait(1)
+                task.wait(0.1)
                 hum.CFrame = workspace.Lifebricks["4"].CFrame
-                task.wait(1)
+                task.wait(0.1)
                 hum.Parent.Humanoid.Health = -1
                 plr.CharacterAdded:Wait()
-                task.wait(1)
+                task.wait(.5)
                 hum = workspace:FindFirstChild(plr.Name).HumanoidRootPart
             end
 		end)
