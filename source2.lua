@@ -1315,7 +1315,7 @@ local Toggle = gamescripts:CreateToggle({
                 task.wait(0.1)
                 hum.Parent.Humanoid.Health = -1
                 plr.CharacterAdded:Wait()
-                task.wait(.5)
+                task.wait(1)
                 hum = workspace:FindFirstChild(plr.Name).HumanoidRootPart
             end
 		end)
