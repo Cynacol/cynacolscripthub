@@ -31,8 +31,12 @@ local Window = Rayfield:CreateWindow({
    }
 })
 
+local plr = game.Players.LocalPlayer
+local character = plr.Character
+local hum = workspace:FindFirstChild(plr.Name).HumanoidRootPart
 local Randomscripts = Window:CreateTab("Miscellaneous")
 local flingscripts = Window:CreateTab("Fling Things and People")
+local gamescripts = Window:CreateTab("Random games")
 
 local Button = Randomscripts:CreateButton({
    Name = "Infinite Yield FE Admin",
@@ -1287,4 +1291,35 @@ local flinganti2 = flingscripts:CreateButton({
     end,
 })
 
+local bcb = gamescripts:CreateLabel("Be Crushed by a Speeding Wall")
+local Toggle = gamescripts:CreateToggle({
+   Name = "Autofarm Coins",
+   CurrentValue = false,
+   Callback = function(Value)
+    CurrentValue = Value
+
+    
+	if Value == true then
+
+		task.spawn(function()
+
+			while CurrentValue == true do task.wait()
+
+                hum.CFrame = workspace.Lifebricks["1"].CFrame
+                task.wait(1)
+                hum.CFrame = workspace.Lifebricks["2"].CFrame
+                task.wait(1)
+                hum.CFrame = workspace.Lifebricks["3"].CFrame
+                task.wait(1)
+                hum.CFrame = workspace.Lifebricks["4"].CFrame
+                task.wait(1)
+                hum.Parent.Humanoid.Health = -1
+                plr.CharacterAdded:Wait()
+                task.wait(1)
+                hum = workspace:FindFirstChild(plr.Name).HumanoidRootPart
+            end
+		end)
+	end
+   end,
+})
 Rayfield:LoadConfiguration()
